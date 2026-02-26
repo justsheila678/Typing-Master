@@ -7,11 +7,18 @@ def main(page: ft.Page):
     words = ["Apocalypse", "Sunsets", "Headphones", "Hoodie", "Moon", "Cycle", "Pecan", "Candle", "Tomato", "Cinnamon", "Bounce", 
              "Medicine", "Crab", "Project", "Voucher", "Wrist", "Fountain", "Manifesting", "Hamper", "Helicopter", "Prosper", "Lebanese", "Wednesday"]
     
+    #UI Requirements
     current_word_text = ft.Text(value="Current Word: ", size=30)
     word_status_text = ft.Text(value="Answer Status: ", size=20)
     mistakes_text = ft.Text(value="Total Mistakes: ", size=20)
     word_progress_text = ft.Text(value="X/Y Words", size=20)
     word_input = ft.TextField(label="Type Word Here", on_submit=None)
+
+    #Variables
+    selected_words = rand.sample(words, 15)
+    current_word_index = 0
+    mistakes = 0
+    correct_words = 0
 
     page.add(current_word_text, word_status_text, mistakes_text, word_progress_text, word_input)
 

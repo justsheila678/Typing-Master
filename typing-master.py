@@ -39,7 +39,7 @@ def main(page: ft.Page):
     #function that will actually affect the variables after the user submits their answer
     def check_word(e):
         change_word_status(e)
-        change_word_status(e)
+        change_current_word(e)
         current_word_index += 1
         page.update()
 

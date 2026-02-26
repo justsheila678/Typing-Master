@@ -26,6 +26,17 @@ def main(page: ft.Page):
         word_progress_text.value = f"{correct_words}/{len(selected_words)} Words"
         page.update()
 
+    #function for word status text, mistakes text, and correct words text
+    def change_word_status(e):
+        if word_input.value == selected_words[current_word_index]:
+            word_status_text.color = "#04871a"
+            word_status_text.value = "Answer Status: Correct!"
+            correct_words += 1
+        else:
+            mistakes += 1
+            mistakes_text.value = f"Total Mistakes: {mistakes}"
+            word_status_text.color = "#9c0c11"
+            word_status_text.value = "Answer Status: Incorrect!"
 
     page.add(current_word_text, word_status_text, mistakes_text, word_progress_text, word_input)
 

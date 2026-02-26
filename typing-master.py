@@ -20,6 +20,13 @@ def main(page: ft.Page):
     mistakes = 0
     correct_words = 0
 
+    #function to change the current word text
+    def change_current_word(e):
+        current_word_text.value = f"Current Word: {selected_words[current_word_index]}"
+        word_progress_text.value = f"{correct_words}/{len(selected_words)} Words"
+        page.update()
+
+
     page.add(current_word_text, word_status_text, mistakes_text, word_progress_text, word_input)
 
 ft.app(target=main)

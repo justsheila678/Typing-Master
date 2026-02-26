@@ -7,13 +7,6 @@ def main(page: ft.Page):
     words = ["Apocalypse", "Sunsets", "Headphones", "Hoodie", "Moon", "Cycle", "Pecan", "Candle", "Tomato", "Cinnamon", "Bounce", 
              "Medicine", "Crab", "Project", "Voucher", "Wrist", "Fountain", "Manifesting", "Hamper", "Helicopter", "Prosper", "Lebanese", "Wednesday"]
     
-    #UI Requirements
-    current_word_text = ft.Text(value="Current Word: ", size=30)
-    word_status_text = ft.Text(value="Answer Status: ", size=20)
-    mistakes_text = ft.Text(value="Total Mistakes: ", size=20)
-    word_progress_text = ft.Text(value="X/Y Words", size=20)
-    word_input = ft.TextField(label="Type Word Here", on_submit=None)
-
     #Variables
     selected_words = rand.sample(words, 15)
     current_word_index = 0
@@ -32,11 +25,22 @@ def main(page: ft.Page):
             word_status_text.color = "#04871a"
             word_status_text.value = "Answer Status: Correct!"
             correct_words += 1
+            word_progress_text.value = f"{correct_words}/{len(selected_words)} Words"
+            page.update()
         else:
             mistakes += 1
             mistakes_text.value = f"Total Mistakes: {mistakes}"
             word_status_text.color = "#9c0c11"
             word_status_text.value = "Answer Status: Incorrect!"
+            page.update()
+
+    #UI Requirements
+    current_word_text = ft.Text(value=f"Current Word: {selected_words[current_word_index]}", size=30)
+    word_status_text = ft.Text(value="Answer Status: ", size=20)
+    mistakes_text = ft.Text(value=f"Total Mistakes: {mistakes}", size=20)
+    word_progress_text = ft.Text(value=f"{correct_words}/{len(selected_words)}", size=20)
+    
+    word_input = ft.TextField(label="Type Word Here")
 
     page.add(current_word_text, word_status_text, mistakes_text, word_progress_text, word_input)
 

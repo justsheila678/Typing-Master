@@ -23,7 +23,7 @@ def main(page: ft.Page):
     #function for word status text, mistakes text, and correct words text
     def change_word_status(e):
         nonlocal correct_words, mistakes
-        if word_input.value == selected_words[current_word_index]:
+        if word_input.value.lower() == selected_words[current_word_index].lower():
             word_status_text.color = "#04871a"
             word_status_text.value = "Answer Status: Correct!"
             correct_words += 1

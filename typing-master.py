@@ -48,6 +48,8 @@ def main(page: ft.Page):
             word_status_text.color = "#ffffff"
             word_status_text.value = "Answer Status: No words left to evaluate."
             word_progress_text.value = "Progress: All Words Completed!"
+            accuracy = (correct_words/len(selected_words))* 100
+            accuracy_text.value = f"Final Accuracy: {correct_words}/{len(selected_words)} / {accuracy:.2f}%"
         word_input.value = ""
         page.update()
 
@@ -57,7 +59,8 @@ def main(page: ft.Page):
     mistakes_text = ft.Text(value=f"Total Mistakes: {mistakes}", size=20)
     word_progress_text = ft.Text(value=f"Progress: Word {current_word_index+1}/{len(selected_words)}", size=20)
     word_input = ft.TextField(label="Type Word Here", on_submit=check_word)
+    accuracy_text = ft.Text(value="")
 
-    page.add(current_word_text, word_status_text, mistakes_text, word_progress_text, word_input)
+    page.add(current_word_text, word_status_text, mistakes_text, word_progress_text, accuracy_text, word_input)
 
 ft.app(target=main)

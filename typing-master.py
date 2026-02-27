@@ -3,6 +3,7 @@ import random as rand
 
 def main(page: ft.Page):
     page.title = "Typing Master"
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
 
     words = ["Apocalypse", "Sunsets", "Headphones", "Hoodie", "Moon", "Cycle", "Pecan", "Candle", "Tomato", "Cinnamon", "Bounce", 
              "Medicine", "Crab", "Project", "Voucher", "Wrist", "Fountain", "Manifesting", "Hamper", "Helicopter", "Prosper", "Lebanese", "Wednesday"]
@@ -54,6 +55,7 @@ def main(page: ft.Page):
         page.update()
 
     #UI Requirements
+    title_text = ft.Text(value="~Typing Master Game~", size=40, weight=ft.FontWeight.BOLD, italic=True)
     current_word_text = ft.Text(value=f"Current Word: {selected_words[current_word_index]}", size=30)
     word_status_text = ft.Text(value="Answer Status: ", size=20)
     mistakes_text = ft.Text(value=f"Total Mistakes: {mistakes}", size=20)
@@ -61,6 +63,6 @@ def main(page: ft.Page):
     word_input = ft.TextField(label="Type Word Here", on_submit=check_word)
     accuracy_text = ft.Text(value="")
 
-    page.add(current_word_text, word_status_text, mistakes_text, word_progress_text, accuracy_text, word_input)
+    page.add(title_text, current_word_text, word_status_text, mistakes_text, word_progress_text, accuracy_text, word_input)
 
 ft.app(target=main)

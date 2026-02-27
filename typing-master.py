@@ -43,6 +43,10 @@ def main(page: ft.Page):
         current_word_index += 1
         if current_word_index < len(selected_words):
             change_current_word(e)
+        else:
+            current_word_text.value = "Game Over! Check Your Results Below."
+            word_status_text.color = "#ffffff"
+            word_status_text.value = "Answer Status: No words left to evaluate."
         word_input.value = ""
         page.update()
 

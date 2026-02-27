@@ -38,9 +38,12 @@ def main(page: ft.Page):
 
     #function that will actually affect the variables after the user submits their answer
     def check_word(e):
+        nonlocal current_word_index
         change_word_status(e)
-        change_current_word(e)
         current_word_index += 1
+        if current_word_index < len(selected_words):
+            change_current_word(e)
+        word_input.value = ""
         page.update()
 
     #UI Requirements
@@ -48,7 +51,6 @@ def main(page: ft.Page):
     word_status_text = ft.Text(value="Answer Status: ", size=20)
     mistakes_text = ft.Text(value=f"Total Mistakes: {mistakes}", size=20)
     word_progress_text = ft.Text(value=f"{correct_words}/{len(selected_words)}", size=20)
-    
     word_input = ft.TextField(label="Type Word Here", on_submit=check_word)
 
     page.add(current_word_text, word_status_text, mistakes_text, word_progress_text, word_input)

@@ -3,6 +3,7 @@ import random as rand
 
 def main(page: ft.Page):
     page.title = "Typing Master"
+    page.bgcolor = "#040429"
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
 
     words = ["Apocalypse", "Sunsets", "Headphones", "Hoodie", "Moon", "Cycle", "Pecan", "Candle", "Tomato", "Cinnamon", "Bounce", 
@@ -61,7 +62,7 @@ def main(page: ft.Page):
     mistakes_text = ft.Text(value=f"Total Mistakes: {mistakes}", size=20)
     word_progress_text = ft.Text(value=f"Progress: Word {current_word_index+1}/{len(selected_words)}", size=20)
     word_input = ft.TextField(label="Type Word Here", on_submit=check_word)
-    accuracy_text = ft.Text(value="")
+    accuracy_text = ft.Text(value="", size=20, weight=ft.FontWeight.W_600)
 
     page.add(title_text, current_word_text, word_status_text, mistakes_text, word_progress_text, accuracy_text, word_input)
 

@@ -17,7 +17,7 @@ def main(page: ft.Page):
     def change_current_word(e):
         nonlocal current_word_index
         current_word_text.value = f"Current Word: {selected_words[current_word_index]}"
-        word_progress_text.value = f"{correct_words}/{len(selected_words)} Words"
+        word_progress_text.value = f"Progress: Word {current_word_index+1}/{len(selected_words)}"
         page.update()
 
     #function for word status text, mistakes text, and correct words text
@@ -27,7 +27,7 @@ def main(page: ft.Page):
             word_status_text.color = "#04871a"
             word_status_text.value = "Answer Status: Correct!"
             correct_words += 1
-            word_progress_text.value = f"{correct_words}/{len(selected_words)} Words"
+            word_progress_text.value = f"Progress: Word {current_word_index+1}/{len(selected_words)}"
             page.update()
         else:
             mistakes += 1
@@ -47,6 +47,7 @@ def main(page: ft.Page):
             current_word_text.value = "Game Over! Check Your Results Below."
             word_status_text.color = "#ffffff"
             word_status_text.value = "Answer Status: No words left to evaluate."
+            word_progress_text.value = "Progress: All Words Completed!"
         word_input.value = ""
         page.update()
 
@@ -54,7 +55,7 @@ def main(page: ft.Page):
     current_word_text = ft.Text(value=f"Current Word: {selected_words[current_word_index]}", size=30)
     word_status_text = ft.Text(value="Answer Status: ", size=20)
     mistakes_text = ft.Text(value=f"Total Mistakes: {mistakes}", size=20)
-    word_progress_text = ft.Text(value=f"{correct_words}/{len(selected_words)}", size=20)
+    word_progress_text = ft.Text(value=f"Progress: Word {current_word_index+1}/{len(selected_words)}", size=20)
     word_input = ft.TextField(label="Type Word Here", on_submit=check_word)
 
     page.add(current_word_text, word_status_text, mistakes_text, word_progress_text, word_input)

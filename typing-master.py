@@ -51,7 +51,7 @@ def main(page: ft.Page):
             word_status_text.value = "Answer Status: No words left to evaluate."
             word_progress_text.value = "Progress: All Words Completed!"
             accuracy = (correct_words/len(selected_words))* 100
-            accuracy_text.value = f"Final Accuracy: {correct_words}/{len(selected_words)} / {accuracy:.2f}%"
+            accuracy_text.value = f"Final Accuracy: {correct_words}/{len(selected_words)} ({accuracy:.2f}%)"
         word_input.value = ""
         page.update()
 
